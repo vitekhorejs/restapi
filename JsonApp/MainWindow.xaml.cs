@@ -29,14 +29,12 @@ namespace JsonApp
 
         private void ulozit(object Sender, RoutedEventArgs e)
         {
-            string url = "https://ucitel.sps-prosek.cz/~maly/PRG/json.php";
+            string url = "https://jsonplaceholder.typicode.com/comments";
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
-
-
+            IRestResponse response = client.Execute<List<komenty>>(request);
+   
         }
 
-        
     }
 }
