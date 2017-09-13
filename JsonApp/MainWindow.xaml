@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Label Content="server" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Button Height="30" Width="50" VerticalAlignment="Top" Margin="0,30,0,0" Content="ulozit" Click="Ulozit"></Button>
+
+
     </Grid>
 </Window>

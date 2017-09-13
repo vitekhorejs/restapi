@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading.Tasks;
+using RestSharp;
 
 namespace JsonApp
 {
@@ -24,5 +26,17 @@ namespace JsonApp
         {
             InitializeComponent();
         }
+
+        private void ulozit(object Sender, RoutedEventArgs e)
+        {
+            string url = "https://ucitel.sps-prosek.cz/~maly/PRG/json.php";
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+
+
+        }
+
+        
     }
 }
