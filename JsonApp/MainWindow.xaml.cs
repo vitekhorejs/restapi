@@ -35,8 +35,8 @@ namespace JsonApp
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute<List<komenty>>(request);
-            serializer.Serialize(stream, response);
-            File.WriteAllText(path, stream + Datetime);
+            stream = SimpleJson.SerializeObject(response);
+            File.WriteAllText(path, stream);
    
         }
 
