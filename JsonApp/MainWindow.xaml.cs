@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Threading.Tasks;
 using RestSharp;
+using System.IO;
 
 namespace JsonApp
 {
@@ -30,10 +31,14 @@ namespace JsonApp
         private void ulozit(object Sender, RoutedEventArgs e)
         {
             string url = "https://jsonplaceholder.typicode.com/comments";
+            string stream;
+            string path = "data.txt";
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute<List<komenty>>(request);
-   
+            var response = client.Execute<List<komenty>>(request);
+            stream = SimpleJson.SerializeObject(response.Data);
+            File.WriteAllText(path, stream + DateTime.Now.ToString());
+            status.Content = "OK, data uložená v texťáku!!!";
         }
 
     }
