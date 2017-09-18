@@ -30,9 +30,13 @@ namespace JsonApp
         private void ulozit(object Sender, RoutedEventArgs e)
         {
             string url = "https://jsonplaceholder.typicode.com/comments";
+            string stream;
+            string path = "data.txt";
             var client = new RestClient(url);
             var request = new RestRequest(Method.GET);
             IRestResponse response = client.Execute<List<komenty>>(request);
+            serializer.Serialize(stream, response);
+            File.WriteAllText(path, stream + Datetime);
    
         }
 
